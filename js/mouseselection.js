@@ -13,9 +13,13 @@ var MouseSelection = {
 		});		
 	},
 
-	handleMouseDown: function(e) {
+	destroyElement: function() {
 		this.element.remove();
 		this.element = null;
+	},
+
+	handleMouseDown: function(e) {
+		this.destroyElement();
 		//canvas.style.cursor = "crosshair";		
 		this.isDrawing = true
 		this.startX = parseInt(e.clientX);
@@ -29,10 +33,18 @@ var MouseSelection = {
 		if (this.callback) {
 			this.callback(this.element);
 		}
+		// TOOD: fixa ett smidigt sätt att kunna börja om med sin markering
+		$("body").off('mousedown');
+		$("body").off('mousemove');
+		$("body").off('mouseup');
+
+		//console.log(this.getValues());
 		//e.stopPropagation();
 	},
 
 	handleMouseMove: function(e) {
+
+		//console.log("x", e.pageX, "y", e.pageY);
 
 		if (!this.element) {
 			this.element = this.createElement();
@@ -58,6 +70,19 @@ var MouseSelection = {
 		el.css('top', this.startY);
 		el.css('left', this.startX);
 		return el;
+	},
+
+	getValues: function() {
+		return {
+			top: this.element.offset().top,
+			left: this.element.offset().left,
+			width: this.element.width(),
+			height: this.element.height()
+		}
+	},
+
+	hideBorder: function() {
+		this.element.addClass('no-border');
 	}
 
 

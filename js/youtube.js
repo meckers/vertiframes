@@ -34,14 +34,16 @@ function createGrabButton() {
 	ClipNote_snapshotButton.html("Grab");
 	ClipNote_snapshotButton.addClass("snapshot-button");
 	ClipNote_snapshotButton.click(function() {
-		var player = jQuery('#player-api');
-		var offset = player.offset();
+		//var player = jQuery('#player-api');
+		//var offset = player.offset();
+		var values = MouseSelection.getValues();
+		MouseSelection.hideBorder();
 		chrome.runtime.sendMessage({
 			event: "button-clicked",
-			top: offset.top,
-			left: offset.left,
-			width: player.width(),
-			height: player.height()
+			top: values.top,
+			left: values.left,
+			width: values.width,
+			height: values.height
 		}, function(response) {});
 	});
 	$("#player").append(ClipNote_snapshotButton);

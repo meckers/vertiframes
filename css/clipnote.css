@@ -27,11 +27,12 @@
 }
 
 .caption {
+	/*
 	width: 372px;
 	left: 50%;
-	margin-left: -314px;
-	height: 81px;
-	top: 287px;
+	margin-left: -314px;*/
+	/*height: 81px;
+	top: 287px;*/
 	padding: 3px;
 	font-size: 2em;
 	font-style: italic;
@@ -48,4 +49,12 @@
 .mouse-selection {
 	border: 1px dotted white;
 	position: absolute;
+}
+
+.no-border {
+	border: none;
+}
+
+.hidden {
+	display: none;
 }

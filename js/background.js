@@ -18,16 +18,17 @@ chrome.runtime.onMessage.addListener(
 
                 jQuery.post("http://localhost:9873/upload", {
                     image: imgUrl,
-                    left: Math.ceil(request.left),
                     top: Math.ceil(request.top),
+                    left: Math.ceil(request.left),                    
                     width: Math.ceil(request.width),
                     height: Math.ceil(request.height)
                     /*
                     offset: { left: 50, top: 70 },
                     dimensions: { width: 100, height: 120 }
                     */
-                }, function(response) {
-                    console.log("Upload done...", response);
+                }, function(data) {
+                    console.log("Upload done...", data);                    
+                    chrome.tabs.create({ url: 'http://localhost:9873' + data.url });
                 });
 
                 respond({image: imgUrl});
