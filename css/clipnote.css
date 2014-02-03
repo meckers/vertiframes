@@ -13,17 +13,26 @@
 }
 
 .snapshot-button {
-	padding: 3px;
+	padding: 10px;
 	border: 1px solid black;
-	background-color: wheat;
-	top: 416px;
-	left: 558px;
-	width: 54px;
-	height: 14px;
+	border-top: none;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	background-color: white;
+	right: 0px;
+/*	top: 416px;*/
+	/*left: 558px;*/
+/*	width: 54px;
+	height: 14px; */
+	bottom: -35px;
 	position: absolute;
 	z-index: 100;
 	color: black;
 	cursor: pointer;
+}
+
+.snapshot-button:hover {
+	background-color: #efefef;
 }
 
 .caption {
@@ -40,6 +49,19 @@
 	color: white;
 	position: absolute;
 	z-index: 100;
+}
+
+.sidebar {
+	z-index: 2000000000;
+	width: 300px;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	border: none;
+	margin: 0;
+	padding: 0;
+	border-left: 2px solid black;
 }
 
 .caption:hover, .caption:active {
