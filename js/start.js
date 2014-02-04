@@ -1,5 +1,7 @@
 jQuery(function() {
-	openSidebar();
-	enableSelection();
+	//openSidebar();
+	//enableSelection();
 	//createGrabButton();
+	ClipNote.App.init();
+	ClipNote.App.activate();
 });

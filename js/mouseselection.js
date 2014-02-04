@@ -1,15 +1,18 @@
-var MouseSelection = {
+var ClipNote = ClipNote || {};
+
+ClipNote.MouseSelection = {
 
 	init: function(callback) {
 
 		this.callback = callback;
+		var me = this;
 
 		$("body").on('mousedown', function (e) {
-			MouseSelection.handleMouseDown(e);
+			me.handleMouseDown(e);
 		}).on('mouseup', function(e) {
-			MouseSelection.handleMouseUp();
+			me.handleMouseUp();
 		}).on('mousemove', function(e) {
-			MouseSelection.handleMouseMove(e);
+			me.handleMouseMove(e);
 		});		
 	},
 

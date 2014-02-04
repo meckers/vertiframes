@@ -1,5 +1,8 @@
-var TextEditor = {
+var ClipNote = ClipNote || {};
+
+ClipNote.TextEditor = {
 	create: function(container) {
+		var me = this;
 		this.$container = $(container);
 		this.element = jQuery("<div></div>");
 		this.element.addClass('caption');
@@ -18,28 +21,28 @@ var TextEditor = {
 		this.element.attr('spellcheck', 'false');
 		this.element.html('Enter your caption');
 		this.element.on('click', function() {
-			TextEditor.focus();
+			me.focus();
 		});
 		this.element.on('blur', function() {	
-			TextEditor.element.off('keypress keydown keyup');
+			me.element.off('keypress keydown keyup');
 		});
 
 		jQuery(container).append(this.element);		
 
-		TextEditor.focus();
+		this.focus();
 	},
 
 	focus: function() {
 		$(this.element).focus();
-		TextEditor.selectAll();
-		TextEditor.kkk = TextEditor.element.on('keypress keydown keyup', function(ev) {
+		this.selectAll();
+		this.kkk = this.element.on('keypress keydown keyup', function(ev) {
 			ev.stopPropagation();
 		});		
 	},
 
 	selectAll: function() {
 		var range = document.createRange();
-		range.selectNodeContents(TextEditor.element[0]);
+		range.selectNodeContents(this.element[0]);
 		var sel = window.getSelection();
 		sel.removeAllRanges();
 		sel.addRange(range);		
